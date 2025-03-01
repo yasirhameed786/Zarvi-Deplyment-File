@@ -5,7 +5,9 @@ import joblib
 app = Flask(__name__)
 CORS(app)  
 
-model = joblib.load('sentiment_model.pkl')  
+# Load the pre-trained sentiment model and vectorizer
+model = joblib.load('sentiment_model.pkl')
+vectorizer = joblib.load('vectorizer.pkl')  # Ensure you have a vectorizer
 
 @app.route('/')
 def home():
@@ -15,15 +17,20 @@ def home():
 def analyze():
     data = request.json
     message = data['message']
-    words = message.split()
+    
+    # Preprocess the message using the vectorizer
+    message_vectorized = vectorizer.transform([message])
+    
+    # Predict sentiment based on the vectorized message
+    sentiment = model.predict(message_vectorized)[0]
+    
     sentiment_counts = {'positive': 0, 'neutral': 0, 'negative': 0}
 
-    for word in words:
-        sentiment = model.predict([word])[0]
-        if sentiment in sentiment_counts:
-            sentiment_counts[sentiment] += 1
+    # Assuming sentiment is predicted as one of 'positive', 'neutral', or 'negative'
+    if sentiment in sentiment_counts:
+        sentiment_counts[sentiment] += 1
 
-    total_words = len(words)
+    total_words = len(message.split())
     if total_words == 0:
         return jsonify({'message': "No words to analyze."})
 
@@ -40,7 +47,6 @@ def analyze():
         'details': sentiment_percentages
     }
     return jsonify(response)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
