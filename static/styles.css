@@ -1,0 +1,104 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f0f2f5; /* Light grey background */
+    background-image: url("img.jpg");
+    font-family: Arial, sans-serif;
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Optional: keeps the image fixed during scrolling */
+}
+
+}
+
+/* Sentiment Analyzer Section */
+#sentiment-analyzer {
+    width: 350px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+#sentiment-results {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px; /* Extra spacing for clarity */
+}
+
+/* Chat Container */
+#chat-container {
+    width: 350px;
+    height: 500px;
+    background-color: #f4f4f8;
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chat Box for displaying messages */
+#chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form styling for user input */
+#user-input-form {
+    display: flex;
+    padding: 10px;
+}
+
+#user-input-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#user-input-form button {
+    padding: 10px 20px;
+    background-color: #5c67f2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#user-input-form button:hover {
+    background-color: #5058e5;
+}
+
+/* Styles for messages in the chat box */
+.message {
+    margin-bottom: 16px;
+    line-height: 24px;
+}
+
+.user-message {
+    align-self: flex-end;
+    max-width: 80%;
+    background-color: #dcf8c6;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bot-message {
+    align-self: flex-start;
+    max-width: 80%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+}
